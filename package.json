@@ -1,0 +1,19 @@
+{
+  "name": "secret-message",
+  "version": "1.0.0",
+  "description": "Secret messaging service with encryption",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonschwadron/secret-message.git"
+  },
+  "author": "Jonathan Schwadron",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/jonschwadron/secret-message/issues"
+  },
+  "homepage": "https://github.com/jonschwadron/secret-message#readme"
+}
