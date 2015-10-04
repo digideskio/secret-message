@@ -41,23 +41,21 @@ server.use('/', function(req, res, next) {
 //   next();
 // });
 
+
+// Make our db accessible to our router
+// app.use(function(req,res,next){
+//     req.db = db;
+//     next();
+// });
+
+
 server.post('/', function() {
   console.log("SOMEONE HAS TRIED TO POST TO /");
 });
 
- //index
+
 server.get('/', function(req, res) {
   res.sendFile(__dirname + '/views/index.html');
-});
-
-//create
-server.get('/create', function(req, res) {
-  res.sendFile(__dirname + '/views/create.html');
-});
-
-//reveal
-server.get('/reveal', function(req, res) {
-  res.sendFile(__dirname + '/views/reveal.html');
 });
 
 server.get('*', function(req, res) {
@@ -65,5 +63,5 @@ server.get('*', function(req, res) {
 });
 
 server.listen(3000, function() {
-  console.log("I'm waiting...");
+  console.log("Jubru server is running at 100% capacity!");
 });
