@@ -45,9 +45,19 @@ server.post('/', function() {
   console.log("SOMEONE HAS TRIED TO POST TO /");
 });
 
+ //index
 server.get('/', function(req, res) {
-  console.log("SOMEONE HAS ASKED / TO GET");
   res.sendFile(__dirname + '/views/index.html');
+});
+
+//create
+server.get('/create', function(req, res) {
+  res.sendFile(__dirname + '/views/create.html');
+});
+
+//reveal
+server.get('/reveal', function(req, res) {
+  res.sendFile(__dirname + '/views/reveal.html');
 });
 
 server.get('*', function(req, res) {
