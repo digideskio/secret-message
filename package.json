@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jonschwadron/secret-message/issues"
   },
-  "homepage": "https://github.com/jonschwadron/secret-message#readme"
+  "homepage": "https://github.com/jonschwadron/secret-message#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
 }
