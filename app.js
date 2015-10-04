@@ -1,27 +1,53 @@
-var http = require('http');
+var express = require('express'),
+    server  = express();
 
-var server = http.createServer(function (req, res) {
-  if (req.url === "/create") {
-    res.writeHead(200, {
-      'content-type': 'text/html'
-    });
-    res.write("<h1>Create a secret message.</h1>");
-    res.end();
-  } else if (req.url === "/reveal") {
-    res.writeHead(200, {
-      'content-type': 'text/html'
-    });
-    res.write("<h1>Reveal a secret message.</h1>");
-    res.end();
-  } else {
-    res.writeHead(404, {
-      'content-type': 'text/html'
-    });
-    res.write("<h1>404</h1>");
-    res.end();
-  };
+// ROUTES
+
+/*
+  since server.use needs a CALLBACK function,
+  express.static() must create one for us....
+  that means, that when we execute express.static(),
+  it constructs and returns a callback function.  ta-da
+*/
+server.use(express.static('public_files'));
+
+server.use(function (req, res, next) { // MEGA LOGGER
+  console.log("=========== BEGIN LOGGER ===========");
+  console.log("req.body:   ", req.body);
+  console.log("req.query:  ", req.query);
+  console.log("req.params: ", req.params);
+  console.log("===========  END LOGGER  ===========");
+  next();
 });
 
-server.listen(3000, function() {
-  console.log("Listening on port 3000...");
+/* server.use happens for every incoming request that matches the string */
+server.use('/', function (req, res, next) {
+  // req.newProperty = "Hey, I'm not going anywhere..."
+  console.log("SOMEONE HAS HIT /");
+  next();
+});
+
+// server.use('/', function (req, res, next) {
+//   // console.log(req.newProperty);
+//   if (req.query.user) {
+//     res.greeting = "<h1>Howdy, " + req.query.user.name + "....</h1>";
+//   } else {
+//     res.greeting = "<h1>Howdy, stranger....</h1>";
+//   }
+//
+//   console.log("Query: ", req.query);
+//   next();
+// });
+
+server.post('/', function () {
+  console.log("SOMEONE HAS TRIED TO POST TO /");
+});
+
+server.get('/', function (req, res) {
+  console.log("SOMEONE HAS ASKED / TO GET");
+  res.sendFile(__dirname + '/views/index.html');
+});
+
+server.listen(3000, function () {
+  console.log("I'm waiting...");
 });
