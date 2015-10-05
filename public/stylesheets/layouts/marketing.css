@@ -280,3 +280,9 @@ a.pure-button-primary {
         font-size: 300%;
     }
 }
+
+.iambox {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}

@@ -53,7 +53,6 @@ server.post('/', function() {
   console.log("SOMEONE HAS TRIED TO POST TO /");
 });
 
-
 server.get('/', function(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
@@ -64,4 +63,12 @@ server.get('*', function(req, res) {
 
 server.listen(3000, function() {
   console.log("Jubru server is running at 100% capacity!");
+});
+
+server.get("/box/:width/:height/:color", function (req, res, next) {
+  var result = '<div style="width: ' + req.params.width + 'px; ' +
+               'height: ' + req.params.height + 'px; ' +
+               'background-color: ' + req.params.color + ';"></div>';
+  res.write(result);
+  res.end();
 });
